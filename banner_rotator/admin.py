@@ -22,8 +22,8 @@ class PlaceAdmin(admin.ModelAdmin):
 class CampaignBannerInline(admin.StackedInline):
     model = Banner
     extra = 0
-    readonly_fields = ['views', 'clicks']
-    fields = ['is_active', 'places', 'name', 'url', 'file', 'weight', 'views', 'clicks']
+    readonly_fields = ['views',]
+    fields = ['is_active', 'places', 'name', 'url', 'file', 'weight', 'views',]
     formfield_overrides = {
         models.ManyToManyField: {'widget': forms.CheckboxSelectMultiple},
     }
@@ -44,12 +44,12 @@ class BannerAdmin(admin.ModelAdmin):
             'fields': ('campaign', 'places', 'name', 'url', 'url_target', 'file', 'alt'),
         }),
         (_('Show'), {
-            'fields': ('weight', 'views', 'max_views', 'clicks', 'max_clicks', 'start_at', 'finish_at', 'is_active'),
+            'fields': ('weight', 'views', 'max_views', 'max_clicks', 'start_at', 'finish_at', 'is_active'),
         })
     )
 
     filter_horizontal = ('places',)
-    readonly_fields = ('views', 'clicks',)
+    readonly_fields = ('views',)
 
     object_log_clicks_template = None
 
