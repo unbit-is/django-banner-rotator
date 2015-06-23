@@ -11,7 +11,12 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 
-from banner_rotator.models import Campaign, Place, Banner, Click
+from banner_rotator.models import Campaign, Place, Banner, Click, Advertiser
+
+
+class AdvertiserAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email')
+    fields = ('name', 'email')
 
 
 class PlaceAdmin(admin.ModelAdmin):
@@ -103,3 +108,4 @@ class BannerAdmin(admin.ModelAdmin):
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Place, PlaceAdmin)
+admin.site.register(Advertiser, AdvertiserAdmin)
