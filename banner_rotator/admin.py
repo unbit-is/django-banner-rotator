@@ -5,7 +5,7 @@ from functools import update_wrapper
 
 from django import forms, template
 from django.contrib import admin
-from django.contrib.admin.util import unquote
+from django.contrib.admin.utils import unquote
 from django.db import models
 from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.text import capfirst
