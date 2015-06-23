@@ -27,6 +27,7 @@ def get_banner_upload_to(instance, filename):
 
 class Campaign(models.Model):
     name = models.CharField(_('Name'), max_length=255)
+    advertiser = models.ForeignKey('Advertiser', verbose_name=_('Advertiser'), null=True, blank=True)
     created_at = models.DateTimeField(_('Create at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('Update at'), auto_now=True)
 
@@ -154,3 +155,14 @@ class Click(models.Model):
     ip = models.GenericIPAddressField(null=True, blank=True)
     user_agent = models.TextField(validators=[MaxLengthValidator(1000)], null=True, blank=True)
     referrer = models.URLField(null=True, blank=True)
+
+class Advertiser(models.Model):
+    name = models.CharField(_('Name'), max_length=255)
+    email = models.EmailField()
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Advertiser')
+        verbose_name_plural = _('Advertisers')
