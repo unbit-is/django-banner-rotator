@@ -7,8 +7,8 @@ except ImportError:
     from md5 import md5
 from time import time
 
-from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
 from django.core.validators import MaxLengthValidator
 from django.utils.translation import ugettext_lazy as _
 
@@ -149,7 +149,7 @@ class Banner(models.Model):
 
 class Click(models.Model):
     banner = models.ForeignKey(Banner, related_name="clicks")
-    user = models.ForeignKey(User, null=True, blank=True, related_name="banner_clicks")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, related_name="banner_clicks")
     datetime = models.DateTimeField("Clicked at", auto_now_add=True)
     ip = models.GenericIPAddressField(null=True, blank=True)
     user_agent = models.TextField(validators=[MaxLengthValidator(1000)], null=True, blank=True)
