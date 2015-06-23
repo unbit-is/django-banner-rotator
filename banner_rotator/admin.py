@@ -42,8 +42,12 @@ class CampaignAdmin(admin.ModelAdmin):
 
 
 class BannerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'campaign', 'weight', 'url', 'views', 'is_active')
-    list_filter = ('campaign', 'places', 'is_active')
+    def num_clicks(self, obj):
+        return obj.clicks.count()
+    num_clicks.short_description = _('Clicks')
+
+    list_display = ('name', 'campaign', 'weight', 'url', 'views', 'num_clicks', 'is_active')
+    list_filter = ('campaign', 'places', 'is_active', 'campaign__advertiser')
     date_hierarchy = 'created_at'
     fieldsets = (
         (_('Main'), {
