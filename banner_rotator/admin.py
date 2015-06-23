@@ -30,8 +30,9 @@ class CampaignBannerInline(admin.StackedInline):
 
 
 class CampaignAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
-    fields = ('name',)
+    list_display = ('name', 'advertiser', 'created_at', 'updated_at')
+    list_filter = ('advertiser',)
+    fields = ('name', 'advertiser')
     inlines = [CampaignBannerInline]
 
 
