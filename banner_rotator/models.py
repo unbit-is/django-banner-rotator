@@ -155,9 +155,16 @@ class Click(models.Model):
     user_agent = models.TextField(validators=[MaxLengthValidator(1000)], null=True, blank=True)
     referrer = models.URLField(null=True, blank=True)
 
+
 class Advertiser(models.Model):
-    name = models.CharField(_('Name'), max_length=255)
+    ragione_sociale = models.CharField(_('Ragione sociale'), max_length=255)
     email = models.EmailField()
+    indirizzo = models.CharField(_('Indirizzo'), max_length=255)
+    paese = models.CharField(_('Paese'), max_length=255)
+    codice_fiscale = models.CharField(_('Codice fiscale'), max_length=255)
+    partita_iva = models.CharField(_('Partita IVA'), max_length=255)
+    telefono = models.CharField(_('Telefono'), max_length=255)
+    agente = models.ForeignKey('Agente', verbose_name=_('Agente'))
 
     def __unicode__(self):
         return self.name
@@ -165,3 +172,15 @@ class Advertiser(models.Model):
     class Meta:
         verbose_name = _('Advertiser')
         verbose_name_plural = _('Advertisers')
+
+class Agente(models.Model):
+    nome = models.CharField(_('Nome'), max_length=255)
+    cognome = models.CharField(_('Cognome'), max_length=255)
+    email = models.EmailField()
+    
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Agente')
+        verbose_name_plural = _('Agenti')
