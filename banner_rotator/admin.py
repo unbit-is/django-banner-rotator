@@ -11,12 +11,12 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 
-from banner_rotator.models import Campaign, Place, Banner, Click, Advertiser, Agente
+from banner_rotator.models import Campaign, Place, Banner, Click, Advertiser, Agent
 
 
 class AdvertiserAdmin(admin.ModelAdmin):
-    list_display = ('ragione_sociale', 'email', 'indirizzo', 'paese', 'codice_fiscale', 'partita_iva', 'telefono', 'agente')
-    fields = ('ragione_sociale', 'email', 'indirizzo', 'paese', 'codice_fiscale', 'partita_iva', 'telefono', 'agente')
+    list_display = ('company_name', 'email', 'address', 'city', 'tax_code', 'vat_number', 'phone_number', 'agent')
+    fields = ('company_name', 'email', 'address', 'city', 'tax_code', 'vat_number', 'phone_number', 'agent')
 
 
 class PlaceAdmin(admin.ModelAdmin):
@@ -113,4 +113,4 @@ admin.site.register(Banner, BannerAdmin)
 admin.site.register(Campaign, CampaignAdmin)
 admin.site.register(Place, PlaceAdmin)
 admin.site.register(Advertiser, AdvertiserAdmin)
-admin.site.register(Agente)
+admin.site.register(Agent)
