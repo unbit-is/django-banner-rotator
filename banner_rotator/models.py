@@ -157,14 +157,14 @@ class Click(models.Model):
 
 
 class Advertiser(models.Model):
-    company_name = models.CharField(_('Company name'), max_length=255)
+    name = models.CharField(_('Company name'), max_length=255)
     email = models.EmailField()
-    address = models.CharField(_('Address'), max_length=255)
-    city = models.CharField(_('City'), max_length=255)
-    tax_code = models.CharField(_('Tax code'), max_length=255)
-    vat_number = models.CharField(_('VAT number'), max_length=255)
-    phone_number = models.CharField(_('Phone number'), max_length=255)
-    agent = models.ForeignKey('Agent', verbose_name=_('Agent'))
+    address = models.CharField(_('Address'), max_length=255, null=True, blank=True)
+    city = models.CharField(_('City'), max_length=255, null=True, blank=True)
+    tax_code = models.CharField(_('Tax code'), max_length=255, null=True, blank=True)
+    vat_number = models.CharField(_('VAT number'), max_length=255, null=True, blank=True)
+    phone_number = models.CharField(_('Phone number'), max_length=255, null=True, blank=True)
+    agent = models.ForeignKey('Agent', verbose_name=_('Agent'), null=True, blank=True)
 
     def __unicode__(self):
         return self.name
@@ -176,7 +176,7 @@ class Advertiser(models.Model):
 class Agent(models.Model):
     name = models.CharField(_('Name'), max_length=255)
     surname = models.CharField(_('Surname'), max_length=255)
-    email = models.EmailField()
+    email = models.EmailField(null=True, blank=True)
     
     def __unicode__(self):
         return self.name
