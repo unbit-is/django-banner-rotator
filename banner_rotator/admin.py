@@ -15,8 +15,8 @@ from banner_rotator.models import Campaign, Place, Banner, Click, Advertiser, Ag
 
 
 class AdvertiserAdmin(admin.ModelAdmin):
-    list_display = ('company_name', 'email', 'address', 'city', 'tax_code', 'vat_number', 'phone_number', 'agent')
-    fields = ('company_name', 'email', 'address', 'city', 'tax_code', 'vat_number', 'phone_number', 'agent')
+    list_display = ('name', 'email', 'address', 'city', 'tax_code', 'vat_number', 'phone_number', 'agent')
+    fields = ('name', 'email', 'address', 'city', 'tax_code', 'vat_number', 'phone_number', 'agent')
 
 
 class PlaceAdmin(admin.ModelAdmin):
